@@ -13,7 +13,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
-import siteLinks from '../assets/siteLinks.json';
+import siteLinks from '@/assets/siteLinks.json';
 
 const route = useRoute();
 const siteId = route.query.site;        // 获取 URL 参数
