@@ -1,0 +1,17 @@
+[
+  {
+    "id": "blog",
+    "title": "博客",
+    "url": "https://blog.3865472.xyz/"
+  },
+  {
+    "id": "blog",
+    "title": "博客",
+    "url": "https://blog.example.com"
+  },
+  {
+    "id": "shop",
+    "title": "商城",
+    "url": "https://shop.example.com"
+  }
+]
