@@ -50,37 +50,28 @@ function verify() {
 
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-}
+/* 登录界面美化样式 */
 .big_box {
-  min-height: 100vh;
-  min-width: 100vw;
-  overflow: hidden;
+  height: 100vh;
   border: 1px solid transparent;
   background-image: url("https://imgbed.3865472.xyz/file/1756413348168_Gy-w-QFWoAAG3hY.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 .box {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  max-width: 90vw;
-  padding: 24px;
+  width: 500px;
+  padding: 40px;
   background: rgba(255,255,255,0.45);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 }
 .box h2 {
-  margin: 0 0 24px;
+  margin: 0 0 30px;
   padding: 0;
   color: #fff;
   text-align: center;
@@ -94,7 +85,7 @@ body {
   font-size: 16px;
   color: #fff;
   letter-spacing: 1px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid #fff;
   outline: none;

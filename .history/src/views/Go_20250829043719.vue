@@ -57,6 +57,7 @@ body {
   width: 100vw;
   height: 100vh;
 }
+/* 登录界面美化样式 */
 .big_box {
   min-height: 100vh;
   min-width: 100vw;

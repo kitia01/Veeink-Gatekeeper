@@ -1,12 +1,12 @@
 [
   {
-    "id": "csdn",
-    "title": "CSDN-Tittle",
+    "id": "blog",
+    "title": "博客",
     "url": "https://blog.csdn.net/kitia01?type=blog"
   },
   {
     "id": "github",
-    "title": "GitHub",
+    "title": "小说",
     "url": "https://github.com/kitia01"
   }
 ]

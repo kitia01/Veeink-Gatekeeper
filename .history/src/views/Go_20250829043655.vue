@@ -50,16 +50,9 @@ function verify() {
 
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-}
+/* 登录界面美化样式 */
 .big_box {
   min-height: 100vh;
-  min-width: 100vw;
   overflow: hidden;
   border: 1px solid transparent;
   background-image: url("https://imgbed.3865472.xyz/file/1756413348168_Gy-w-QFWoAAG3hY.jpeg");
