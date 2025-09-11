@@ -3,7 +3,7 @@
     <div class="box">
       <h2>{{ site ? site.title : '受保护站点' }}</h2>
       <form @submit.prevent="verify">
-        <div v-if="site">
+        <div v-if="site || feature">
           <div class="inputBox">
             <input type="password" v-model="password" required />
             <label>密码</label>
@@ -30,21 +30,60 @@ const route = useRoute();
 const siteId = route.params.site || route.query.site;
 const site = siteLinks.find(s => s.id === siteId);
 
+// 新增支持 feature（前端会传 ?feature=xxx）
+const feature = route.query.feature;
+// 回传目标域从环境变量读取（不设默认值）
+const TARGET_ORIGIN = import.meta.env.VITE_GATE_TARGET_ORIGIN;
+
 const password = ref('');
 const error = ref('');
 
+// 弹窗模式：向 opener 回传结果
+function sendResult(ok) {
+  try {
+    if (window.opener && feature && TARGET_ORIGIN) {
+      window.opener.postMessage(
+        { type: 'gate-verify', feature, ok },
+        TARGET_ORIGIN
+      );
+    }
+  } catch (e) {
+    // 忽略跨域/窗口不可用错误
+  }
+}
+
 // 自动跳转已验证过的站点
 if (site && localStorage.getItem(`auth_${siteId}`) === 'ok') {
-  window.location.href = site.url;
+  // 若已验证且不是 feature 弹窗场景，直接跳转
+  if (!feature || !window.opener) {
+    window.location.href = site.url;
+  }
 }
 
 function verify() {
   if (password.value === import.meta.env.VITE_SITE_PASSWORD) {
     localStorage.setItem(`auth_${siteId}`, 'ok');
-    window.location.href = site.url;
+    if (window.opener && feature) {
+      // 弹窗模式：回传成功并关闭窗口
+      sendResult(true);
+      window.close();
+    } else if (site) {
+      // 独立访问且存在站点：跳转
+      window.location.href = site.url;
+    } else {
+      // 无站点且非弹窗：不跳转，仅提示
+      error.value = '验证成功，但缺少站点参数，无法跳转';
+    }
   } else {
     error.value = '密码错误，请重试';
   }
+}
+
+// 可选：用户关闭/刷新弹窗时也回传失败，防止无响应
+if (feature && window.opener) {
+  window.addEventListener('beforeunload', () => {
+    sendResult(false);
+  });
 }
 </script>
 
