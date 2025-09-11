@@ -70,7 +70,7 @@ gate/
 在 Vercel 项目 Settings → Environment Variables 中新增：
 
 - `VITE_SITE_PASSWORD`：访问口令（Gate 页面校验用）
-- (新功能)`VITE_GATE_TARGET_ORIGIN`：Gate 回传目标域（例如 `https://veeink.3865472.xyz`）
+- (新功能)`VITE_GATE_TARGET_ORIGIN`：Gate 回传目标域（例如 `https://xxxxx.com`）
 
 说明：
 
